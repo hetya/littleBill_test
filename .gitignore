@@ -1,1 +1,3 @@
 project/back/pyvenv
+__pycache__/
+.env
