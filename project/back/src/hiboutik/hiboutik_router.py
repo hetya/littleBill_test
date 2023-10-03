@@ -8,12 +8,9 @@ router = APIRouter()
 async def get_customers_by_lastName(lastName : str):
     if lastName is None or lastName == '':
         raise HTTPException(status_code=400, detail="Bad Request : lastName is empty")
-    try:
-        r = HiboutikApi.get('/customers/search/?last_name=' + lastName)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail="Internal Server Error")
-    print(r.status_code)
-    print(r.json())
+    r = HiboutikApi.get('/customers/search/?last_name=' + lastName)
     return r.json()
 
-
+@router.get("/get_customer_sales/{customer_id}")
+def get_customer_sales(customer_id : int):
+    pass
