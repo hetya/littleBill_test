@@ -13,4 +13,13 @@ async def get_customers_by_lastName(lastName : str):
 
 @router.get("/get_customer_sales/{customer_id}")
 def get_customer_sales(customer_id : int):
-    pass
+    r = HiboutikApi.get('/customer/' + str(customer_id), {'p' : '1'})
+    return r.json()
+
+@router.get("/create_sales/{customer_id}/{quantity}")
+def create_sales(customer_id : int, quantity : int):
+    # for i in range(quantity):
+        # r = HiboutikApi.post('/sales', {'store_id' : 1, 'customer_id' : customer_id, 'currency_code' : 'EUR'})
+    r = HiboutikApi.post('/sales', {'store_id' : 1, 'customer_id' : customer_id, 'currency_code' : 'EUR'})
+    print(r.json())
+    return "sales created"

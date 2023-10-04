@@ -1,0 +1,55 @@
+version : "3.9"
+
+services:
+  db:
+    image: mongo
+    container_name: db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_DB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_DB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_DB_DATABASE}
+    ports:
+      - 27017:27017
+    volumes:
+      - db-data:/data/db
+    networks:
+      - littleBill-net
+  back:
+    container_name: back
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    environment:
+      MONGO_DB_ROOT_USERNAME: ${MONGO_DB_ROOT_USERNAME}
+      MONGO_DB_ROOT_PASSWORD: ${MONGO_DB_ROOT_PASSWORD}
+      MONGO_DB_HOST: db
+      MONGO_DB_PORT: 27017
+    restart : unless-stopped
+    ports:
+      - 8000:8000
+    networks:
+      - littleBill-net
+
+  front:
+    container_name: front
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    restart : unless-stopped
+    environment:
+      REACT_APP_IP_BACK: ${REACT_APP_IP_BACK}
+    ports:
+      - 8080:8080
+    depends_on:
+      - back
+    networks:
+      - littleBill-net
+
+volumes:
+  db-data:
+
+networks:
+  littleBill-net:
