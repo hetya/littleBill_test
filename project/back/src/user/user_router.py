@@ -1,5 +1,4 @@
 from fastapi import APIRouter
-# from mongodb.mongo import MONGOCLIENT
 from mongodb.mongo import Mongo
 from pydantic import BaseModel
 import pprint
@@ -10,14 +9,18 @@ router = APIRouter()
 class IUser(BaseModel):
     login : str
     password : str
-    # user_id : int = None
+    user_id : int | None = None
 
-@router.get("/id")
-def get_id():
-    return {"id" : 1}
+# @router.get("/id")
+# def get_id():
+#     return {"id" : 1}
 
-@router.get("/auth/login")
-def login():
+@router.get("/auth/login") # TODO : add jwt
+def login(user : IUser):
+    try:
+        Mongo().get_users_collection().find_one({"login" : user.login, "password" : user.password})
+    except Exception as e:
+        raise HTTPException(status_code=400, detail="Bad Request : login or password is incorrect")
     return {"login" : "login"}
 
 @router.post("/auth/signup")
@@ -35,25 +38,3 @@ def signup( user : IUser): # TODO: add username filter for characters like white
     except Exception as e:
         raise HTTPException(status_code=400, detail="Bad Request : login already exists")
     return {"signup" : "ok"}
-
-# new_user = {
-#     "login" : "a",
-#     "password" : "a"
-# }
-# if users_collection is not None:
-    # users_collection.insert_one(new_user)
-
-# try:
-#     users_collection = Mongo().get_users_collection()
-#     users_collection.insert_one(new_user)
-# except Exception as e:
-#     print(e)
-
-# printer = pprint.PrettyPrinter()
-# try:
-#     users_collection = Mongo().get_users_collection()
-#     people = users_collection.find()
-# except Exception as e:
-#     print(e)
-# for person in people:
-#     printer.pprint(person)
