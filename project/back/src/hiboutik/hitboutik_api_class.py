@@ -18,27 +18,47 @@ class HiboutikApi:
 
     @classmethod
     def get(cls, path, params=None):
-        if (header := cls.__get_auth_header()) is not None:
-            r = requests.get(cls._url + path, params=params, headers=cls.__get_auth_header())
-        return r
+        header = cls.__get_auth_header()
+        if header is not None:
+            try:
+                r = requests.get(cls._url + path, params=params, headers=cls.__get_auth_header())
+                return r
+            except Exception as e:
+                raise HTTPException(status_code=500, detail="Hiboutik API Error")
+        return None
 
     @classmethod
     def post(cls, path, data):
-        if (header := cls.__get_auth_header()) is not None:
-            r = requests.post(cls._url + path, data=data, headers=cls.__get_auth_header())
-        return r
+        header = cls.__get_auth_header()
+        if header is not None:
+            try:
+                r = requests.post(cls._url + path, data=data, headers=cls.__get_auth_header())
+                return r
+            except Exception as e:
+                raise HTTPException(status_code=500, detail="Hiboutik API Error")
+        return None
     
     @classmethod
     def put(cls, path, data):
-        if (header := cls.__get_auth_header()) is not None:
-            r = requests.put(cls._url + path, data=data, headers=cls.__get_auth_header())
-        return r
+        header = cls.__get_auth_header()
+        if header is not None:
+            try:
+                r = requests.put(cls._url + path, data=data, headers=cls.__get_auth_header())
+                return r
+            except Exception as e:
+                raise HTTPException(status_code=500, detail="Hiboutik API Error")
+        return None
 
     @classmethod
     def delete(cls, path):
-        if (header := cls.__get_auth_header()) is not None:
-            r = requests.delete(cls._url + path, headers=cls.__get_auth_header())
-        return r
+        header = cls.__get_auth_header()
+        if header is not None:
+            try:
+                r = requests.delete(cls._url + path, headers=cls.__get_auth_header())
+                return r
+            except Exception as e:
+                raise HTTPException(status_code=500, detail="Hiboutik API Error")
+        return None
     
     # Methods not implemented :
     # Head, Connect, Options, Trace

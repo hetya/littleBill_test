@@ -4,7 +4,8 @@ import os
 
 class Mongo(MongoClient):
     def __init__(self):
-        if (MONGO_URI := os.environ.get('MONGODB_URI')) is not None:
+        MONGO_URI = os.environ.get('MONGODB_URI')
+        if MONGO_URI is not None:
             super().__init__(MONGO_URI)
         else:
             super().__init__(MONGO_URI)

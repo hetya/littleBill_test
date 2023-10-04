@@ -23,10 +23,10 @@ services:
     depends_on:
       - db
     environment:
-      MONGO_DB_ROOT_USERNAME: ${MONGO_DB_ROOT_USERNAME}
-      MONGO_DB_ROOT_PASSWORD: ${MONGO_DB_ROOT_PASSWORD}
-      MONGO_DB_HOST: db
-      MONGO_DB_PORT: 27017
+      MONGODB_URI : mongodb://${MONGO_DB_ROOT_USERNAME}:${MONGO_DB_ROOT_PASSWORD}@db:27017
+      HIBOUTIK_API_USERNAME : ${HIBOUTIK_API_USERNAME}
+      HIBOUTIK_API_TOKEN : ${HIBOUTIK_API_TOKEN}
+      HIBOUTIK_API_URL : ${HIBOUTIK_API_URL}
     restart : unless-stopped
     ports:
       - 8000:8000

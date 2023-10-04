@@ -9,7 +9,6 @@ router = APIRouter()
 class IUser(BaseModel):
     login : str
     password : str
-    user_id : int | None = None
 
 # @router.get("/id")
 # def get_id():
@@ -25,9 +24,9 @@ def login(user : IUser):
 
 @router.post("/auth/signup")
 def signup( user : IUser): # TODO: add username filter for characters like whitespaces, etc.
-    if user.login is None or user.login == '' or user.login.len > 120 :
+    if user.login is None or user.login == '' or user.login.len() > 120 :
         raise HTTPException(status_code=400, detail="Bad Request : login is empty or too long")
-    if user.password is None or user.password == ''or user.login.len > 120:
+    if user.password is None or user.password == ''or user.login.len() > 120:
         raise HTTPException(status_code=400, detail="Bad Request : password is empty or too long")
     new_user = {
         "login" : user.login,

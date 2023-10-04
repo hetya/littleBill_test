@@ -2,3 +2,4 @@ project/back/pyvenv
 __pycache__/
 project/front/app/node_modules/
 .env
+.idea/
