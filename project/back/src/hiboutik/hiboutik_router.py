@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from hiboutik.hitboutik_api_class import HiboutikApi
+# from mongodb.mongo import MONGOCLIENT
 
 # hiboutik_router = APIRouter(prefix="/hiboutik")
 router = APIRouter()

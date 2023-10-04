@@ -11,13 +11,13 @@ app.include_router(user_router.router, prefix="/user")
 def read_root():
     return {"Hello" : "World"}
 
-from pymongo import MongoClient
-import os
-if (MONGO_URI := os.environ.get('MONGODB_URI')) is not None:
-    client = MongoClient(MONGO_URI)
-else:
-    # pass
-    print (MONGO_URI)
+# from pymongo import MongoClient
+# import os
+# if (MONGO_URI := os.environ.get('MONGODB_URI')) is not None:
+#     client = MongoClient(MONGO_URI)
+# else:
+#     # pass
+#     print (MONGO_URI)
 
-dbs = client.list_database_names()
-print(dbs)
+# dbs = client.list_database_names()
+# print(dbs)
