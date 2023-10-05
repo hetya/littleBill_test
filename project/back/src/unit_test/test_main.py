@@ -4,14 +4,29 @@ from ..main import app
 import pytest
 
 client = TestClient(app)
+headers={}
+
+def test_home_missing_header():
+    response = client.get("/")
+    assert response.status_code == status.HTTP_401_UNAUTHORIZED
+
+def test_home_bad_header():
+    response = client.get("/", headers={"Authorization": "Bearer dummy_value"})
+    assert response.status_code == status.HTTP_401_UNAUTHORIZED
+
+def test_login():
+    global headers
+    response = client.post("/user/auth/login", json={"login" : "aaa", "password" : "aaa"})
+    assert response.status_code == status.HTTP_200_OK
+    headers = {"Authorization": "Bearer " + response.json()['access_token']}
 
 def test_home():
-    response = client.get("/")
+    response = client.get("/", headers=headers)
     assert response.status_code == status.HTTP_200_OK
     assert response.json() == {"Hello" : "World"}
 
 def test_get_customers_by_lastName():
-    response = client.get("/hiboutik/search_customers_by_lastName/Didierjean")
+    response = client.get("/hiboutik/search_customers_by_lastName/Didierjean", headers=headers)
     assert response.status_code == status.HTTP_200_OK
     assert response.json() == [
         {
@@ -53,17 +68,17 @@ def test_get_customers_by_lastName():
     ]
 
 def test_get_customer_sales_empty_customer():
-    response = client.get("/hiboutik/get_customer_sales/10/1")
+    response = client.get("/hiboutik/get_customer_sales/10/1", headers=headers)
     assert response.status_code == status.HTTP_200_OK
     assert response.json() == []
 
 def test_get_customer_sales_empty_customer_page_2():
-    response = client.get("/hiboutik/get_customer_sales/10/2")
+    response = client.get("/hiboutik/get_customer_sales/10/2", headers=headers)
     assert response.status_code == status.HTTP_200_OK
     assert response.json() == []
 
 def test_get_customer_sales_customer_with_3_sales():
-    response = client.get("/hiboutik/get_customer_sales/3/1")
+    response = client.get("/hiboutik/get_customer_sales/3/1", headers=headers)
     assert response.status_code == status.HTTP_200_OK
     assert response.json() == [
     {
@@ -111,7 +126,7 @@ def test_get_customer_sales_customer_with_3_sales():
 ]
 
 def test_get_customer_sales_customer_with_6_sales_page_2():
-    response = client.get("/hiboutik/get_customer_sales/2/2")
+    response = client.get("/hiboutik/get_customer_sales/2/2", headers=headers)
     assert response.status_code == status.HTTP_200_OK
     assert response.json() == [
     {

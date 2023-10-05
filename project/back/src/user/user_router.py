@@ -45,6 +45,10 @@ def decode_jwt(authorization: str = Header(None)):
         raise HTTPException(status_code=401, detail="Unauthorized : token expired")
     except jwt.InvalidTokenError:
         raise HTTPException(status_code=401, detail="Unauthorized : invalid token")
+    except ValueError:
+        raise HTTPException(status_code=401, detail="Unauthorized : invalid header")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Internal Server Error")
     return None
 
 
