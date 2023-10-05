@@ -1,0 +1,34 @@
+.connection-component{
+    width:20rem;
+    background-color: var(--app-header-and-connection-background-color);
+    height : 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.connection-input-and-button{
+    margin: 0 1rem 1.5rem 1rem;
+    font-size: 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    border: 0.2rem solid rgba(128, 44, 175, 0.82);
+    border-radius: 0.25rem;
+    background-color: var(--app-header-and-connection-background-color);
+    color: white;
+    outline: none;
+    cursor: pointer;
+}
+
+.connection-error{
+    color:red;
+    font-size: 0.7rem;
+    margin: 0 0 .5rem 0;
+}
+
+.connection-input-button-login{
+    border-color: #36a83d;
+    background-color: #36a83d;
+}
+
+.connection-input-button-signup{
+    border-color: #36a83d;
+}

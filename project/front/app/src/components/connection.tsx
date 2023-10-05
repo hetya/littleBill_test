@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../css/connection.css';
 const Connection = () => {
     const [connectionLogin, setConnectionLogin] = useState('');
     const [connectionPassword, setConnectionPassword] = useState('');
@@ -14,6 +15,7 @@ const Connection = () => {
     }
 
     const handleLogin = () => {
+        setError('')
         axios.post(process.env.REACT_APP_IP_BACK + '/user/auth/login', {
             "login" : connectionLogin,
             "password" : connectionPassword
@@ -30,6 +32,7 @@ const Connection = () => {
     }
 
     const handleSignup = () => {
+        setError('')
         axios.post(process.env.REACT_APP_IP_BACK + '/user/auth/signup', {
             "login" : connectionLogin,
             "password" : connectionPassword
@@ -47,12 +50,13 @@ const Connection = () => {
     }
 
     return (
-        <div>
+        <div className='connection-component'>
             <h3>Connection</h3>
-            <input type="text" placeholder="login" value={connectionLogin} onChange={handleLoginChange}/>
-            <input type="password" placeholder="password" value={connectionPassword} onChange={handlePasswordChange}/>
-            <button onClick={handleLogin}>login</button>
-            <button onClick={handleSignup}>signup</button>
+            <input className='connection-input-and-button' type="text" placeholder="login" value={connectionLogin} onChange={handleLoginChange}/>
+            <input className='connection-input-and-button' type="password" placeholder="password" value={connectionPassword} onChange={handlePasswordChange}/>
+            {error ? <p className='connection-error'>*{error}</p> : null}
+            <button className='connection-input-and-button connection-input-button-login' onClick={handleLogin}>login</button>
+            <button className='connection-input-and-button connection-input-button-signup' onClick={handleSignup}>signup</button>
         </div>
     );
 }
