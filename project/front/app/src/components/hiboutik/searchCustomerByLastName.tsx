@@ -23,7 +23,11 @@ export default function SearchByLastName() {
         setError('');
         setCustomers([]);
         setCustomersSalesVisibility({})
-        axios.get(process.env.REACT_APP_IP_BACK + '/hiboutik/search_customers_by_lastName/' + searchCustomerLastName)
+        axios.get(process.env.REACT_APP_IP_BACK + '/hiboutik/search_customers_by_lastName/' + searchCustomerLastName, {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('jwtAuthorization')}`,
+			},
+		})
             .then(response => {
                 console.log(response);
                 setCustomers(response.data);

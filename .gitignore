@@ -3,3 +3,5 @@ __pycache__/
 project/front/app/node_modules/
 .env
 .idea/
+.pytest_cache/
+

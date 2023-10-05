@@ -20,7 +20,11 @@ export default function CustomerSales({customers_id} : {customers_id: string}) {
     }
     useEffect(() => {
         setError('')
-        axios.get(process.env.REACT_APP_IP_BACK + '/hiboutik/get_customer_sales/' + customers_id + '/' + pageNumber)
+        axios.get(process.env.REACT_APP_IP_BACK + '/hiboutik/get_customer_sales/' + customers_id + '/' + pageNumber, {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('jwtAuthorization')}`,
+			},
+		})
             .then(response => {
                 console.log(response);
                 setCustomerSales(response.data);

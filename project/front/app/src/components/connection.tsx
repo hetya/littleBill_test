@@ -22,6 +22,7 @@ const Connection = () => {
         })
             .then(response => {
                 console.log(response);
+                localStorage.setItem('jwtAuthorization', response.data.access_token)
             })
             .catch(error => {
                 console.log(error?.response?.data?.detail);
@@ -39,6 +40,7 @@ const Connection = () => {
         })
             .then(response => {
                 console.log(response);
+                localStorage.setItem('jwtAuthorization', response.data.access_token)
             })
             .catch(error => {
                 console.log(error.data);

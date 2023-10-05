@@ -11,9 +11,7 @@ class Mongo(MongoClient):
             super().__init__(MONGO_URI)
             raise Exception("MONGODB_URI is not set")
             raise HTTPException(status_code=500, detail="Internal Server Error")
-        # super().__init__(MONGO_URI)
         self.users = self.users
-        # self.users_collection = None
         self.hiboutik = self.hiboutik
         self.hiboutik_collection = self.hiboutik.hiboutik_collection
         try:
@@ -24,7 +22,5 @@ class Mongo(MongoClient):
     def get_users_collection(self):
         return self.users.users_collection
     
-    def get_hiboutik_collection(self):
-        # if self.hiboutik_collection is None:
-            # self.hiboutik_collection = self.hiboutik.hiboutik_collection
-        return self.hiboutik_collection
+    # def get_hiboutik_collection(self):
+    #     return self.hiboutik_collection

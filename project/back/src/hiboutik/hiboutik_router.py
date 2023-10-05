@@ -1,20 +1,21 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends, HTTPException
 import math
 from .hitboutik_api_class import HiboutikApi
-# from mongodb.mongo import MONGOCLIENT
+from user.user_router import decode_jwt
+
 
 # prefix="/hiboutik"
 router = APIRouter()
 
 @router.get("/search_customers_by_lastName/{lastName}")
-async def get_customers_by_lastName(lastName : str):
+async def get_customers_by_lastName(lastName : str, token_data: dict = Depends(decode_jwt)):
     if lastName is None or lastName == '':
         raise HTTPException(status_code=400, detail="Bad Request : lastName is empty")
     r = HiboutikApi.get('/customers/search/?last_name=' + lastName)
     return r.json()
 
 @router.get("/get_customer_sales/{customer_id}/{page_number}")
-def get_customer_sales(customer_id : int, page_number : int):
+async def get_customer_sales(customer_id : int, page_number : int, token_data: dict = Depends(decode_jwt)):
     HIBOUTIK_API_NUMBER_OF_SALES_PER_PAGE = 250
     MY_API_NUMBER_OF_SALES_PER_PAGE = 5
     if customer_id is None or customer_id == '' or type(customer_id) is not int or customer_id < 0:
