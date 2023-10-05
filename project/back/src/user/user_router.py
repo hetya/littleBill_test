@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
+import bcrypt
 from mongodb.mongo import Mongo
 
 
@@ -12,10 +13,10 @@ class IUser(BaseModel):
 @router.post("/auth/login") # TODO : add jwt
 def login(user : IUser):
     try:
-        user_data = Mongo().get_users_collection().find_one({"login" : user.login, "password" : user.password})
+        user_data = Mongo().get_users_collection().find_one({"login" : user.login})
     except Exception as e:
-        raise HTTPException(status_code=500, detail="Internal Server Error")
-    if user_data is None:
+        raise HTTPException(status_code=500, detail="Internal Server Error 1")
+    if user_data is None or not bcrypt.checkpw(user.password.encode('utf-8'), user_data['password']):
         raise HTTPException(status_code=400, detail="Bad Request : login or password is incorrect")
     return {"connected"}
 
@@ -27,7 +28,7 @@ def signup( user : IUser): # TODO: add username filter for characters like white
         raise HTTPException(status_code=400, detail="Bad Request : password is empty or too long")
     new_user = {
         "login" : user.login,
-        "password" : user.password
+        "password" : bcrypt.hashpw(user.password.encode('utf-8'), bcrypt.gensalt())
     }
     try:
         Mongo().get_users_collection().insert_one(new_user)
