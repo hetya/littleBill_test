@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import '../../css/customerSales.css';
+import  {ReactComponent as RightArrow} from '../../img/right-arrow.svg';
+import  {ReactComponent as LeftArrow} from '../../img/left-arrow.svg';
 
 export default function CustomerSales({customers_id} : {customers_id: string}) {
     const [customerSales, setCustomerSales] = useState([]);
@@ -8,7 +10,8 @@ export default function CustomerSales({customers_id} : {customers_id: string}) {
     const [error, setError] = useState('');
 
     const handleNextPage = () => {
-        setPageNumber(pageNumber + 1);
+        if (customerSales.length > 0)
+            setPageNumber(pageNumber + 1);
     }
 
     const handlePreviousPage = () => {
@@ -26,7 +29,7 @@ export default function CustomerSales({customers_id} : {customers_id: string}) {
                 console.log(error?.response?.data?.detail);
                 setError(error?.response?.data?.detail);
             });
-    },[]);
+    },[pageNumber]);
 
     return (
         <div className=''>
@@ -49,6 +52,10 @@ export default function CustomerSales({customers_id} : {customers_id: string}) {
                         </div>
                     ))
                 }
+                <div className='customer-sales-arrows'>
+                    <LeftArrow className='customer-sales-arrow' onClick={handlePreviousPage}/>
+                    <RightArrow className='customer-sales-arrow' onClick={handleNextPage}/>
+                </div>
             </div>
         </div>
     );

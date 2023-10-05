@@ -20,7 +20,9 @@ export default function SearchByLastName() {
         setCustomersSalesVisibility(newCustomersSalesVisibility);
     }
     const handleSearchCustomer = () => {
-        setError('')
+        setError('');
+        setCustomers([]);
+        setCustomersSalesVisibility({})
         axios.get(process.env.REACT_APP_IP_BACK + '/hiboutik/search_customers_by_lastName/' + searchCustomerLastName)
             .then(response => {
                 console.log(response);
@@ -50,8 +52,8 @@ export default function SearchByLastName() {
             <div className='search-customers-list'>
                 {
                     customers.map((customer : any) => (
-                        <div className='search-customers-customer' key={customer.customers_id} onClick={() => handleOnCustomerClick(customer.customers_id)}>
-                            <div className='search-customers-customer-header'>
+                        <div className='search-customers-customer' key={customer.customers_id}>
+                            <div className='search-customers-customer-header' onClick={() => handleOnCustomerClick(customer.customers_id)}>
                                 <div>
                                     <p>{customer.last_name}</p>
                                     <p>{customer.first_name}</p>

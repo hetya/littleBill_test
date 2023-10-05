@@ -23,3 +23,15 @@
     margin: 0;
     padding-right: 0.5rem;
 }
+
+.customer-sales-arrows{
+    text-align: right;
+}
+
+.customer-sales-arrow{
+    fill: white;
+    height: 2rem;
+    width: 2rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+}

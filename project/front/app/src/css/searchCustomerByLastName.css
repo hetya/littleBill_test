@@ -38,12 +38,12 @@ input.search-customers-input-and-button{
     border-radius: 0.5rem;
     padding: 0 .5rem 0 .5rem;
     margin-top: 0.5rem;
-    cursor: pointer;
 }
 
 .search-customers-customer-header{
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .search-customers-customer-header > div{
