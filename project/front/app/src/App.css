@@ -2,6 +2,7 @@
   --app-header-height: 5rem;
   --app-header-and-connection-background-color: #282c34;
   --connection-module-width: 20rem;
+  --app-page-background-color: #191c23;
 }
 
 .App {
@@ -34,5 +35,5 @@
   display: flex;
   justify-content: space-between;
   color : white;
-  background-color: #191c23;
+  background-color: var(--app-page-background-color);
 }

@@ -18,6 +18,10 @@
     cursor: pointer;
 }
 
+input.search-customers-input-and-button{
+    cursor: text;
+}
+
 .search-customers-button{
     margin-left: 0.5rem;
     background-color: #515869;
@@ -30,13 +34,26 @@
 
 .search-customers-customer{
     display: flex;
+    justify-content: space-between;
     background-color: #515869;
     opacity: 0.8;
     border-radius: 0.5rem;
     padding: 0 .5rem 0 .5rem;
     margin-top: 0.5rem;
+    cursor: pointer;
 }
 
-.search-customers-customer > p{
+.search-customers-customer > div{
+    display: flex;
+}
+
+.search-customers-customer > div > p{
     margin-left: 0.5rem;
+}
+
+.search-customers-customer-down-arrow{
+    margin-top: 0.75rem;
+    fill: var(--app-page-background-color);
+    height: 2rem;
+    width: 2rem;
 }

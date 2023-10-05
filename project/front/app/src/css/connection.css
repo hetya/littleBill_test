@@ -18,6 +18,10 @@
     cursor: pointer;
 }
 
+input.connection-input-and-button{
+    cursor: text;
+}
+
 .connection-error{
     color:red;
     font-size: 0.7rem;
