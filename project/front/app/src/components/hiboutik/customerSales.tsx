@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 
-function CustomerSales() {
+export default function CustomerSales() {
 
+    return(
+        <div>
+            <p>test</p>
+        </div>
+    );
 }

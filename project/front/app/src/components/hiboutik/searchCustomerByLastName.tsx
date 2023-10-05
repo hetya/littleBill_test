@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import '../../css/searchCustomerByLastName.css';
 import  {ReactComponent as DownArrow} from '../../img/down-arrow.svg';
+import CustomerSales from "./customerSales";
 
 export default function SearchByLastName() {
     const [searchCustomerLastName, setSearchCustomerLastName] = useState('');
@@ -51,12 +52,14 @@ export default function SearchByLastName() {
                 {
                     customers.map((customer : any) => (
                         <div className='search-customers-customer' key={customer.customers_id} onClick={() => handleOnCustomerClick(customer.customers_id)}>
-                            <div>
-                                <p>{customer.last_name}</p>
-                                <p>{customer.first_name}</p>
-                                {customersSalesVisibility[customer.customers_id] ? <p>visibiblity true</p> : <p>visibiblity false</p>}
+                            <div className='search-customers-customer-header'>
+                                <div>
+                                    <p>{customer.last_name}</p>
+                                    <p>{customer.first_name}</p>
+                                </div>
+                                <DownArrow className='search-customers-customer-down-arrow'/>
                             </div>
-                            <DownArrow className='search-customers-customer-down-arrow'/>
+                            {customersSalesVisibility[customer.customers_id] ? <CustomerSales></CustomerSales> : null}
                         </div>
                     ))
                 }

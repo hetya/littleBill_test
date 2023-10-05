@@ -33,8 +33,6 @@ input.search-customers-input-and-button{
 }
 
 .search-customers-customer{
-    display: flex;
-    justify-content: space-between;
     background-color: #515869;
     opacity: 0.8;
     border-radius: 0.5rem;
@@ -43,11 +41,16 @@ input.search-customers-input-and-button{
     cursor: pointer;
 }
 
-.search-customers-customer > div{
+.search-customers-customer-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-customers-customer-header > div{
     display: flex;
 }
 
-.search-customers-customer > div > p{
+.search-customers-customer-header > div > p{
     margin-left: 0.5rem;
 }
 
