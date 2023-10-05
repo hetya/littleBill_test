@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from hiboutik.hitboutik_api_class import HiboutikApi
 import math
+from .hitboutik_api_class import HiboutikApi
 # from mongodb.mongo import MONGOCLIENT
 
 # prefix="/hiboutik"

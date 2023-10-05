@@ -1,7 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from mongodb.mongo import Mongo
 from pydantic import BaseModel
-import pprint
+from mongodb.mongo import Mongo
 
 
 router = APIRouter()
@@ -9,10 +8,6 @@ router = APIRouter()
 class IUser(BaseModel):
     login : str
     password : str
-
-# @router.get("/id")
-# def get_id():
-#     return {"id" : 1}
 
 @router.post("/auth/login") # TODO : add jwt
 def login(user : IUser):
