@@ -48,7 +48,7 @@ export default function SearchByLastName() {
                 <input className='search-customers-input-and-button' type="text" placeholder="Customer Lastname" value={searchCustomerLastName} onChange={handleSearchCustomerLastNameChange}/>
                 <button className='search-customers-input-and-button search-customers-button' onClick={handleSearchCustomer}>Search</button>
             </div>
-            {error ? <p className=''>*{error}</p> : null}
+            {error ? <p className='app-error'>*{error}</p> : null}
             <div className='search-customers-list'>
                 {
                     customers.map((customer : any) => (

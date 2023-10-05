@@ -37,3 +37,8 @@
   color : white;
   background-color: var(--app-page-background-color);
 }
+
+.app-error{
+  color:red;
+  font-size: 0.7rem;
+}

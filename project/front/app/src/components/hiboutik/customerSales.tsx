@@ -35,7 +35,7 @@ export default function CustomerSales({customers_id} : {customers_id: string}) {
         <div className=''>
             <div className='customer-sales-header'>
                 <p>Sales :</p>
-                {error ? <p className=''>*{error}</p> : null}
+                {error ? <p className='app-error'>*{error}</p> : null}
             </div>
             <div className=''>
                 {

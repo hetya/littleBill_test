@@ -23,8 +23,6 @@ input.connection-input-and-button{
 }
 
 .connection-error{
-    color:red;
-    font-size: 0.7rem;
     margin: 0 0 .5rem 0;
 }
 

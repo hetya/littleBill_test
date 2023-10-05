@@ -54,7 +54,7 @@ const Connection = () => {
             <h3>Connection</h3>
             <input className='connection-input-and-button' type="text" placeholder="login" value={connectionLogin} onChange={handleLoginChange}/>
             <input className='connection-input-and-button' type="password" placeholder="password" value={connectionPassword} onChange={handlePasswordChange}/>
-            {error ? <p className='connection-error'>*{error}</p> : null}
+            {error ? <p className='app-error connection-error'>*{error}</p> : null}
             <button className='connection-input-and-button connection-input-button-login' onClick={handleLogin}>login</button>
             <button className='connection-input-and-button connection-input-button-signup' onClick={handleSignup}>signup</button>
         </div>
