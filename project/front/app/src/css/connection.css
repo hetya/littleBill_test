@@ -1,5 +1,5 @@
 .connection-component{
-    width:20rem;
+    width: var(--connection-module-width);
     background-color: var(--app-header-and-connection-background-color);
     height : 100%;
     display: flex;

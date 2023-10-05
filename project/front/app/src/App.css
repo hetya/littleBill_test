@@ -1,6 +1,7 @@
 :root{
   --app-header-height: 5rem;
-  --app-header-and-connection-background-color: #282c34
+  --app-header-and-connection-background-color: #282c34;
+  --connection-module-width: 20rem;
 }
 
 .App {

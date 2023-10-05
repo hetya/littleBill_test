@@ -1,0 +1,42 @@
+.search-customers-component{
+    margin: 0 2rem 0 2rem;
+    width: calc(100% - var(--connection-module-width) - 2rem);
+}
+
+.search-customers-header{
+    text-align: left;
+}
+
+.search-customers-input-and-button{
+    font-size: 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    border: 0.2rem solid #515869;
+    border-radius: 0.25rem;
+    background-color: var(--app-header-and-connection-background-color);
+    color: white;
+    outline: none;
+    cursor: pointer;
+}
+
+.search-customers-button{
+    margin-left: 0.5rem;
+    background-color: #515869;
+}
+
+.search-customers-list{
+    overflow: auto;
+
+}
+
+.search-customers-customer{
+    display: flex;
+    background-color: #515869;
+    opacity: 0.8;
+    border-radius: 0.5rem;
+    padding: 0 .5rem 0 .5rem;
+    margin-top: 0.5rem;
+}
+
+.search-customers-customer > p{
+    margin-left: 0.5rem;
+}
