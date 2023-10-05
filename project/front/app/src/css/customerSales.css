@@ -1,0 +1,25 @@
+.customer-sales-header > p{
+    text-align: left;
+    margin: 0;
+    padding-bottom: 0.5rem;
+}
+
+.customer-sales-list-separator{
+    background-color: white;
+    height: 0.2rem;
+    opacity: 0.7;
+}
+
+.customer-sales-list-sale{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0 0.5rem 0;
+}
+
+.customer-sales-list-sale-price{
+    display: flex;
+}
+.customer-sales-list-sale-price > p{
+    margin: 0;
+    padding-right: 0.5rem;
+}

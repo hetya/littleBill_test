@@ -18,7 +18,6 @@ export default function SearchByLastName() {
         const newCustomersSalesVisibility = {...customersSalesVisibility};
         newCustomersSalesVisibility[customers_id] = !newCustomersSalesVisibility[customers_id];
         setCustomersSalesVisibility(newCustomersSalesVisibility);
-        console.log('change visibility of customer ' + customers_id + ' to ' + newCustomersSalesVisibility[customers_id]);
     }
     const handleSearchCustomer = () => {
         setError('')
@@ -59,7 +58,7 @@ export default function SearchByLastName() {
                                 </div>
                                 <DownArrow className='search-customers-customer-down-arrow'/>
                             </div>
-                            {customersSalesVisibility[customer.customers_id] ? <CustomerSales></CustomerSales> : null}
+                            {customersSalesVisibility[customer.customers_id] ? <CustomerSales customers_id={customer.customers_id}></CustomerSales> : null}
                         </div>
                     ))
                 }
