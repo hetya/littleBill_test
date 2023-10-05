@@ -27,6 +27,7 @@ services:
       HIBOUTIK_API_USERNAME : ${HIBOUTIK_API_USERNAME}
       HIBOUTIK_API_TOKEN : ${HIBOUTIK_API_TOKEN}
       HIBOUTIK_API_URL : ${HIBOUTIK_API_URL}
+      JWT_SECRET_KEY : ${JWT_SECRET_KEY}
     restart : unless-stopped
     ports:
       - 8000:8000
