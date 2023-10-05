@@ -20,7 +20,7 @@ COPY src /app
 
 WORKDIR /app
 
-RUN pip3 install fastapi uvicorn requests pymongo bcrypt pytest httpx
+RUN pip3 install fastapi uvicorn requests pymongo bcrypt pyjwt cryptography pytest httpx
 
 RUN export export PYTHONPATH=/app:$PYTHONPATH
 
